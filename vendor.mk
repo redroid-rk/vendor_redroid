@@ -3,9 +3,13 @@ PRODUCT_BROKEN_VERIFY_USES_LIBRARIES := true
 
 PRODUCT_PACKAGES += \
 	binder_alloc \
-	gralloc.redroid \
 	ipconfigstore \
 
+ifeq ($(GPU_NODE),mali)
+PRODUCT_PACKAGES += gralloc.mali
+else
+PRODUCT_PACKAGES += gralloc.redroid
+endif
 
 PRODUCT_COPY_FILES += \
     vendor/redroid/gpu_config.sh:$(TARGET_COPY_OUT_VENDOR)/bin/gpu_config.sh \

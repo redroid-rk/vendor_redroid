@@ -1,5 +1,6 @@
-cc_library_shared {
-    name: "gralloc.redroid",
+cc_defaults {
+    name: "gralloc_redroid_defaults",
+
     vendor: true,
 
     srcs: [
@@ -16,9 +17,24 @@ cc_library_shared {
     ],
 
     cflags: [
-        "-Wall", "-Werror",
+        "-Wall",
+        "-Werror",
         "-DLOG_TAG=\"gralloc\"",
     ],
 
     relative_install_path: "hw",
+}
+
+cc_library_shared {
+    name: "gralloc.redroid",
+    defaults: ["gralloc_redroid_defaults"],
+}
+
+
+// 这个也是 gralloc.redroid
+// 但是为了隐藏redroid关键字，修改了ro.hardware/ro.boot.hardware的值
+// 所以这个so库也得改名字
+cc_library_shared {
+    name: "gralloc.mali",
+    defaults: ["gralloc_redroid_defaults"],
 }

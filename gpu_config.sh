@@ -68,7 +68,7 @@ gpu_setup_mali() {
     echo "use GPU host mode"
 
     setprop ro.hardware.egl mali
-    setprop ro.hardware.gralloc redroid
+    setprop ro.hardware.gralloc mali
     setprop debug.stagefright.ccodec 4
     setprop ro.boot.redroid_fps 60
 }
